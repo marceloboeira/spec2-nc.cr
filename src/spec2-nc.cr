@@ -23,7 +23,7 @@ module Spec2
       end
 
       def report
-        if @errors.size > 0
+        if failed?
           notify("Error")
         else
           notify("Success")
@@ -32,6 +32,10 @@ module Spec2
 
       private def notify(message : String)
         TerminalNotifier.notify(message)
+      end
+
+      private def failed?
+        @errors.size > 0
       end
     end
   end
