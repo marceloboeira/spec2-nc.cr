@@ -4,6 +4,9 @@ require "terminal-notifier"
 module Spec2
   module Reporters
     class Nc < Reporter
+      ERROR_ICON = "\u26D4"
+      SUCCESS_ICON = "\u2705"
+
       def initialize
         @errors = [] of Spec2::ExpectationNotMet
       end
@@ -23,11 +26,15 @@ module Spec2
       end
 
       def report
+        message = ""
+
         if failed?
-          notify("Error")
+          message = "#{ERROR_ICON} Error"
         else
-          notify("Success")
+          message = "#{SUCCESS_ICON} Success"
         end
+
+        notify(message)
       end
 
       private def notify(message : String)
