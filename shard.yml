@@ -13,4 +13,4 @@ development_dependencies:
 dependencies:
   terminal-notifier:
     github: marceloboeira/terminal-notifier.cr
-    version: ~> 0.0.4
+    version: ~> 0.1.0
