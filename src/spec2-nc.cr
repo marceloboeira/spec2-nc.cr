@@ -42,7 +42,11 @@ module Spec2
       end
 
       private def failed?
-        @errors.size > 0
+        failure_count > 0
+      end
+
+      private def failure_count
+        @errors.size
       end
     end
   end
