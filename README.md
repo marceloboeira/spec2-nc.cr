@@ -21,6 +21,15 @@ require "spec2-nc"
 Spec2.configure_reporter(Spec2::Reporters::Nc)
 ```
 
+## Roadmap
+
+* [x] POC
+* [ ] Mock TerminalNotifier on tests
+* [ ] Implement full usable Notifier
+* [ ] Make Spec2 work with multiple Reporters
+* [ ] NcFirstFail - Notifies on the first failed example
+* [ ] Custom Notification settings(sounds)
+
 ## Contributing
 
 1. Fork it (https://github.com/marceloboeira/spec2-nc.cr/fork)
