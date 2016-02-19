@@ -43,7 +43,7 @@ module Spec2
       end
 
       def project_name
-        project = File.basename(File.expand_path("."))
+        File.basename(File.expand_path("."))
       end
 
       private def notify(title : String, subtitle : String, message : String)
