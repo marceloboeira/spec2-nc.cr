@@ -31,14 +31,12 @@ module Spec2
       def report
         title = project_name
         subtitle = ""
-        message = ""
+        message = "#{SUCCESS_ICON} Success"
 
         if failed?
           subtitle = "#{ERROR_ICON} #{failure_count} failed example"
           subtitle += "s" if failure_count > 1
           message += "#{@failed_examples.first.description}"
-        else
-          message = "#{SUCCESS_ICON} Success"
         end
 
         notify(title, subtitle, message)
