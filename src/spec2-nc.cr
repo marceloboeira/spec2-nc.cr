@@ -9,6 +9,7 @@ module Spec2
 
       def initialize
         @errors = [] of Spec2::ExpectationNotMet
+        @failed_examples = [] of Spec2::Example
       end
 
       def configure_output(@output); end
@@ -19,31 +20,36 @@ module Spec2
 
       def example_failed(example, exception)
         @errors << exception
+        @failed_examples << example
       end
 
       def example_errored(example, exception)
         @errors << exception
+        @failed_examples << example
       end
 
       def report
         title = project_name
+        subtitle = ""
+        message = ""
 
         if failed?
-          message = "#{ERROR_ICON} #{failure_count} failed example"
-          message += "s" if failure_count > 1
+          subtitle = "#{ERROR_ICON} #{failure_count} failed example"
+          subtitle += "s" if failure_count > 1
+          message += "#{@failed_examples.first.description}"
         else
           message = "#{SUCCESS_ICON} Success"
         end
 
-        notify(title, message)
+        notify(title, subtitle, message)
       end
 
       def project_name
         project = File.basename(File.expand_path("."))
       end
 
-      private def notify(title : String, message : String)
-        TerminalNotifier.execute({ title: title, message: message })
+      private def notify(title : String, subtitle : String, message : String)
+        TerminalNotifier.execute({ title: title, subtitle: subtitle, message: message })
       end
 
       private def failed?
