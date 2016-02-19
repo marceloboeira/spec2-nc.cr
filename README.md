@@ -1,6 +1,8 @@
 # spec2-nc
 > Spec2 tests with notifications
 
+Proudly inspired by [rspec-nc](https://github.com/twe4ked/rspec-nc).
+
 ## Installation
 
 Add this to your application's `shard.yml`:
