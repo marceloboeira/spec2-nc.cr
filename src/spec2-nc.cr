@@ -26,7 +26,7 @@ module Spec2
       end
 
       def report
-        message = ""
+        title = project_name
 
         if failed?
           message = "#{ERROR_ICON} #{failure_count} failed example"
@@ -35,11 +35,15 @@ module Spec2
           message = "#{SUCCESS_ICON} Success"
         end
 
-        notify(message)
+        notify(title, message)
       end
 
-      private def notify(message : String)
-        TerminalNotifier.notify(message)
+      def project_name
+        project = File.basename(File.expand_path("."))
+      end
+
+      private def notify(title : String, message : String)
+        TerminalNotifier.execute({ title: title, message: message })
       end
 
       private def failed?
