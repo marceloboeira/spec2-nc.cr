@@ -29,7 +29,8 @@ module Spec2
         message = ""
 
         if failed?
-          message = "#{ERROR_ICON} Error"
+          message = "#{ERROR_ICON} #{failure_count} failed example"
+          message += "s" if failure_count > 1
         else
           message = "#{SUCCESS_ICON} Success"
         end
