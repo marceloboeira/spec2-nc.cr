@@ -12,6 +12,8 @@ describe Spec2::Reporters::Nc do
 
   context "with failed examples" do
     before do
+      reporter.example_succeeded(example)
+      reporter.example_failed(example, Spec2::ExpectationNotMet.new("Default Error"))
       reporter.example_failed(example, Spec2::ExpectationNotMet.new("Default Error"))
     end
 
