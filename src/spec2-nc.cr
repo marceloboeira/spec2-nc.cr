@@ -32,12 +32,12 @@ module Spec2
 
       def report
         title = project_name
-        subtitle = ""
+        subtitle = "Finished in #{elapsed_time}"
         message = "#{SUCCESS_ICON} Success"
 
         if failed?
-          subtitle = "#{ERROR_ICON} #{failure_count} failed example"
-          subtitle += "s" if failure_count > 1
+          message = "#{ERROR_ICON} #{failure_count} failed example"
+          message += "s" if failure_count > 1
           message += "#{@failed_examples.first.description}"
         end
 
