@@ -3,7 +3,9 @@ require "terminal-notifier"
 
 module Spec2
   module Reporters
-    class Nc < Reporter
+    class Nc
+      include Spec2::Reporter
+
       ERROR_ICON = "\u26D4"
       SUCCESS_ICON = "\u2705"
 
