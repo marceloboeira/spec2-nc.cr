@@ -5,16 +5,22 @@ module Spec2
   module Reporters
     class Nc
       include Spec2::Reporter
+      extend Spec2::Reporter::Factory
 
       ERROR_ICON = "\u26D4"
       SUCCESS_ICON = "\u2705"
+
+      def self.build
+        new
+      end
 
       def initialize
         @errors = [] of Spec2::ExpectationNotMet
         @failed_examples = [] of Spec2::Example
       end
 
-      def configure_output(@output); end
+
+      def configure_output(output); end
       def context_started(context); end
       def context_finished(context); end
       def example_started(example); end
@@ -32,7 +38,7 @@ module Spec2
 
       def report
         title = project_name
-        subtitle = "Finished in #{elapsed_time}"
+        subtitle = "Finished in #{ElapsedTime.new.to_s}"
         message = "#{SUCCESS_ICON} Success"
 
         if failed?
